@@ -10,13 +10,13 @@ box     = "centos/7"
 ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8c3uZAc1s+uxfaKdmWbAzxhCRSesUCFKWfpdm0o7R8FKS+VUMxk8xAso+/H9jxsPfC+IO/bDeIYYAtrx/yZ7AKsucI22wvg8WEAZdaZpRbK214HRSwkVpfKNihUFi/JE0BiCScjkF1DPmfiApYZLTelJyoU68AJgaWG0i6khq+YwXI2ON5SXpPblvIASqD20LljTLjcus69ZhzoQAgWJ8ixE/eLDXnxwwqwUK8gMnCNzYblemyZ6roV4e24qjw9IE7lpc47yO3MuKoTtVMqwqzdAn1W3yMQIReChEBJYRTaJsQUFQjBr+jELkbSNhJv8nJn7OOO9yd/+jygYZ+NtX"
 
 
-file_to_disk = "/tmp/maprn02_sdb.vdi"
+file_to_disk = "/tmp/maprn01_sdb.vdi"
 #file_to_disk = "mydisk.vmdk"
 
 # List of servers
 # NOTE: in reverse order to run ansible from the last node in the servers list
 servers = [
-  { :hostname => "maprn02", :hostonly_ip => "192.168.168.16", :bridged_ip => "192.168.1.16", :bridged_adapter=> "eno1", :ram => 6144, :cpu => 2, :ansible_group => "all" }
+  { :hostname => "maprn01", :hostonly_ip => "192.168.168.15", :bridged_ip => "192.168.1.15", :bridged_adapter=> "eno1", :ram => 6144, :cpu => 2, :ansible_group => "all" }
 ]
 
 
@@ -115,7 +115,7 @@ Vagrant.configure(2) do |config|
           yum install -y net-tools wget
 
           # Install a single node MapR cluster
-          curl https://raw.githubusercontent.com/mkieboom/mapr-ansible/master/vagrant/1node_unsecure_minimum.sh | bash
+          curl https://raw.githubusercontent.com/mkieboom/mapr-vagrant/master/1node_unsecure_minimum.sh | bash
 
         EOF
       end #end if
